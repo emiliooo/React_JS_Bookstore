@@ -10,13 +10,14 @@ class AdminPanel extends Component {
                 author: "",
                 description:"",
                 onStock :true,
-                Image:""
-            },
-            books : []
+                image:""
+            }
         }
     }
 
     handleChange = (event) => {
+
+
         let newBook;
 
         if(event.target.name === "onStock") {
@@ -36,16 +37,22 @@ class AdminPanel extends Component {
     }
 
     handleSubmit = (event) => {
-        let newBooks = [...this.state.books];
+        event.preventDefault();
 
         let newBook = { ...this.state.book };
 
-        newBooks.push(newBooks); 
+       this.props.addBook(newBook);
+
 
         this.setState({
-            book : newBooks
+            book : {
+                name : "",
+                author: "",
+                description:"",
+                onStock :true,
+                image:""
+            }
         })
-        event.preventDefault();
     }
 
     render() {
@@ -66,15 +73,13 @@ class AdminPanel extends Component {
                         <label htmlFor="bookOnStock" className="form-check-label">On stock</label>
                     </div>
                     <div className="form-group">
-                        <input type="text" placeholder="book image" id="bookImageInput" name="Image" className="form-control"  onChange={this.handleChange} value={this.state.book.bookImage}/>
+                        <input type="text" placeholder="book image" id="bookimageInput" name="image" className="form-control"  onChange={this.handleChange} value={this.state.book.bookimage}/>
                     </div>
-                    <button> Submit </button>
+                    <button type="submit" className="btn btn-primary"> Submit </button>
             </form>
-    
           </div>
          )
     }
-
 }
 
 export default AdminPanel;
