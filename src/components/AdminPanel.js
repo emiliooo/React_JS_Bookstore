@@ -1,4 +1,5 @@
 import React ,{Component} from 'react';
+import {fbase} from '../fbase';
 
 class AdminPanel extends Component {
 
@@ -16,7 +17,6 @@ class AdminPanel extends Component {
     }
 
     handleChange = (event) => {
-
 
         let newBook;
 
@@ -37,14 +37,15 @@ class AdminPanel extends Component {
     }
 
     handleSubmit = (event) => {
+
         event.preventDefault();
 
         let newBook = { ...this.state.book };
 
-       this.props.addBook(newBook);
-
+       //this.props.addBook(newBook);
 
         this.setState({
+            books : [...this.state.books,newBook],
             book : {
                 name : "",
                 author: "",
@@ -53,6 +54,13 @@ class AdminPanel extends Component {
                 image:""
             }
         })
+    }
+
+    componentDidMount() {
+        fbase.syncState('bookstore/books', {
+            context: this,
+            state: books
+        });
     }
 
     render() {

@@ -30,3 +30,9 @@ code {
 .adminPanel{
   background-color: blue;
 }
+
+.link_admin {
+  padding: 10px;
+  background: beige;
+  margin: 30px;
+}

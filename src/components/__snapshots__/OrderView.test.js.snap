@@ -1,0 +1,521 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order view tests Snapshot matches 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <OrderView
+    book={
+      Object {
+        "name": "Book title",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <b>
+          Book title
+        </b>,
+        " ",
+        <br />,
+        <i>
+           
+        </i>,
+        "  ",
+        <br />,
+        <img
+          alt=""
+          height="100"
+          width="75"
+        />,
+        <button
+          className="btn btn-warning"
+          onClick={[Function]}
+        >
+           Remove Order 
+        </button>,
+      ],
+      "className": "orderView",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Book title",
+        },
+        "ref": null,
+        "rendered": "Book title",
+        "type": "b",
+      },
+      " ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "br",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            " ",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          undefined,
+          " ",
+        ],
+        "type": "i",
+      },
+      "  ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "br",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "alt": "",
+          "height": "100",
+          "src": undefined,
+          "width": "75",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": " Remove Order ",
+          "className": "btn btn-warning",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": " Remove Order ",
+        "type": "button",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <b>
+            Book title
+          </b>,
+          " ",
+          <br />,
+          <i>
+             
+          </i>,
+          "  ",
+          <br />,
+          <img
+            alt=""
+            height="100"
+            width="75"
+          />,
+          <button
+            className="btn btn-warning"
+            onClick={[Function]}
+          >
+             Remove Order 
+          </button>,
+        ],
+        "className": "orderView",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Book title",
+          },
+          "ref": null,
+          "rendered": "Book title",
+          "type": "b",
+        },
+        " ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              " ",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            undefined,
+            " ",
+          ],
+          "type": "i",
+        },
+        "  ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "",
+            "height": "100",
+            "src": undefined,
+            "width": "75",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": " Remove Order ",
+            "className": "btn btn-warning",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": " Remove Order ",
+          "type": "button",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Order view tests Title of the book is displayed as in props 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <OrderView
+    book={
+      Object {
+        "name": "Book title",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <b>
+          Book title
+        </b>,
+        " ",
+        <br />,
+        <i>
+           
+        </i>,
+        "  ",
+        <br />,
+        <img
+          alt=""
+          height="100"
+          width="75"
+        />,
+        <button
+          className="btn btn-warning"
+          onClick={[Function]}
+        >
+           Remove Order 
+        </button>,
+      ],
+      "className": "orderView",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Book title",
+        },
+        "ref": null,
+        "rendered": "Book title",
+        "type": "b",
+      },
+      " ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "br",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            " ",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          undefined,
+          " ",
+        ],
+        "type": "i",
+      },
+      "  ",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "br",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "alt": "",
+          "height": "100",
+          "src": undefined,
+          "width": "75",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": " Remove Order ",
+          "className": "btn btn-warning",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": " Remove Order ",
+        "type": "button",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <b>
+            Book title
+          </b>,
+          " ",
+          <br />,
+          <i>
+             
+          </i>,
+          "  ",
+          <br />,
+          <img
+            alt=""
+            height="100"
+            width="75"
+          />,
+          <button
+            className="btn btn-warning"
+            onClick={[Function]}
+          >
+             Remove Order 
+          </button>,
+        ],
+        "className": "orderView",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Book title",
+          },
+          "ref": null,
+          "rendered": "Book title",
+          "type": "b",
+        },
+        " ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              " ",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            undefined,
+            " ",
+          ],
+          "type": "i",
+        },
+        "  ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "",
+            "height": "100",
+            "src": undefined,
+            "width": "75",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": " Remove Order ",
+            "className": "btn btn-warning",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": " Remove Order ",
+          "type": "button",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

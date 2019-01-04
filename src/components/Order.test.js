@@ -7,20 +7,22 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter : new Adapter()})
 
-describe('App test',() => {
+describe('Order tests',() => {
 
-it('App render without problem',() => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Order/>,div);
-    ReactDOM.unmountComponentAtNode(div);
+    it('Inventory renders without a problem', () => {
+        const div = document.createElement('div');
+        const order = [];
+        ReactDOM.render(<Order order={order} />, div);
+        ReactDOM.unmountComponentAtNode(div);
 
-})
-    it('Order renders' , () => {
-        const wrapper = shallow(<Order/>)
+    })
+    it('Snapshot matches' , () => {
+        const div = document.createElement('div');
+        const order = [];
 
-        //console.log(wrapper.debug())
-
-        expect(wrapper.find('h2').text()).toBe('Order')
+        ReactDOM.render(<Order order={order} />, div);
+        const wrapper = shallow(<Order />);
+        expect(wrapper).toMatchSnapshot(); 
     })
 
 })

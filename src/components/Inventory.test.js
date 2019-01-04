@@ -1,26 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Inventory from './Inventory'
 
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Inventory from './Inventory';
 
 configure({adapter : new Adapter()})
 
-describe('App test',() => {
+describe('Inventory tests',() => {
 
-it('App render without problem',() => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Inventory/>,div);
-    ReactDOM.unmountComponentAtNode(div);
+    it('Inventory renders without a problem', () => {
+        const div = document.createElement('div');
+        const books = [];
+        ReactDOM.render(<Inventory books={books} />, div);
+        ReactDOM.unmountComponentAtNode(div);
 
-})
-    it('Inventory renders' , () => {
-        const wrapper = shallow(<Inventory/>)
-
-        //console.log(wrapper.debug())
-
-        expect(wrapper.find('h2').text()).toBe('Inventory')
+    })
+    it('Snapshot matches' , () => {
+        const books = [];
+        const wrapper = shallow(<Inventory books={books}/>)
+        expect(wrapper).toMatchSnapshot();  
     })
 
 })

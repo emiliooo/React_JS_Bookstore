@@ -1,5 +1,4 @@
 import React ,{Component} from 'react';
-import AdminPanel from './AdminPanel';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -11,10 +10,8 @@ class App extends Component {
       constructor() {
             super();
             this.state = {
-                  books : [],
                   order : []
             }
-
       }
 
       addNewBook = (book) => {
@@ -45,7 +42,6 @@ class App extends Component {
             <div className = "app">  
                   <Header/>
             <div className="row">
-                  <AdminPanel books = {this.state.books} addBook = {this.addNewBook}/>
                   <Order order = {this.state.order} remove = {this.removeFromOrder}/>
                   <Inventory books ={this.state.books} addToOrder = {this.addToOrder} removeFromOrder = {this.removeFromOrder}/> 
             </div>
