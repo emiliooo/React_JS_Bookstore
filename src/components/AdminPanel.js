@@ -6,6 +6,7 @@ class AdminPanel extends Component {
     constructor() {
         super();
         this.state = {
+            books:[],
             book : {
                 name : "",
                 author: "",
@@ -37,15 +38,21 @@ class AdminPanel extends Component {
     }
 
     handleSubmit = (event) => {
-
         event.preventDefault();
+        
 
         let newBook = { ...this.state.book };
 
        //this.props.addBook(newBook);
 
+       if(Array.isArray(this.state.books)) {
+          this.setState({books: [...this.state.books, newBook] })
+            } else {
+            this.setState({books: [newBook]})
+        }
+          
+
         this.setState({
-            books : [...this.state.books,newBook],
             book : {
                 name : "",
                 author: "",
@@ -57,10 +64,14 @@ class AdminPanel extends Component {
     }
 
     componentDidMount() {
-        fbase.syncState('bookstore/books', {
+        this.ref = fbase.syncState('bookstore/books', {
             context: this,
-            state: books
+            state: 'books'
         });
+    }
+
+    componetnWillUnmount() {
+        fbase.removeBinding(this.ref)
     }
 
     render() {

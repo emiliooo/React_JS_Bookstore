@@ -12,27 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.app{
-  background: aqua;
-}
+
 .header {
   background-color:brown;
 }
 
-.order {
-  background-color: darkgreen;
-}
-
 .inventory{
-  background-color:green;
+    /* margin-top: 19px;
+    padding: 13px;
+    border: 3px solid black; */
 }
 
 .adminPanel{
   background-color: blue;
+  margin: 13px;
+  padding: 20px;
 }
 
 .link_admin {
   padding: 10px;
   background: beige;
   margin: 30px;
+}
+
+.bookview{
+  border: 1px solid black;
+  margin: 7px;
+}
+
+.orderView{
+  border-bottom: 3px solid black;
 }

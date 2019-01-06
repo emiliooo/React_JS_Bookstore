@@ -11,7 +11,10 @@ class Order extends Component {
 
          return ( 
 
-            <div className="order col-md-4">
+            <div className="order col-md-6">
+                <div className= "col-xs-12">  
+                   <p><h3>  Book Ordered :</h3></p>
+                 </div>
                 <h2> {bookOrdered} </h2>
             </div> 
          
