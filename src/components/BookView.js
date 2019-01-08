@@ -21,5 +21,4 @@ export default class BookView extends Component {
             </div>
         )
     }
-
 }

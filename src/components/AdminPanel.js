@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {fbase} from '../fbase';
+import {fbase , firebaseApp} from '../fbase';
 
 class AdminPanel extends Component {
 
@@ -13,8 +13,19 @@ class AdminPanel extends Component {
                 description:"",
                 onStock :true,
                 image:""
-            }
+            },
+            loggedIn :false,
+            email: '',
+            password:''
         }
+    }
+
+    handleLoginChange = (event) => {
+
+        this.setState  ({
+            [event.target.name]: event.target.value 
+        })
+
     }
 
     handleChange = (event) => {
@@ -74,8 +85,33 @@ class AdminPanel extends Component {
         fbase.removeBinding(this.ref)
     }
 
+    authenticate = (event) => {
+        event.preventDefault();
+        firebaseApp.auth().signInAndRetrieveDataWithEmailAndPassword(this.state.email,this.state.password)
+            .then(()=> {
+                this.setState({
+                            loggedIn: true
+                 })
+            })
+            .catch ( () => {
+                console.log("error to autho")
+            })
+        //console.log(`${this.state.email} ${this.state.password}`);
+    }
+
     render() {
          return (
+         <div>
+            {!this.state.loggedIn  && 
+               <form className="col-md-2 col-xs-4" onSubmit={this.authenticate}>
+                 <input type="text" placeholder="email" name="email" id="email" className="form-control"
+                    onChange={this.handleLoginChange} value={this.state.email} />
+                 <input type="password"  placeholder="password" id="password" name="password" className="form-control"
+                    onChange={this.handleLoginChange} value={this.state.password} />
+                <button type="submit" class="btn btn-primary"> Add </button>
+               </form>
+            }
+         { this.state.loggedIn && 
          <div className="adminPanel col-md-4">
             <form onSubmit={this.handleSubmit}> 
                     <div className="form-group">
@@ -97,7 +133,10 @@ class AdminPanel extends Component {
                     <button type="submit" className="btn btn-primary"> Submit </button>
             </form>
           </div>
+         }
+         </div>
          )
+
     }
 }
 

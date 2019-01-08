@@ -4,14 +4,12 @@ import {fbase} from '../fbase';
 
 class Inventory extends Component {
 
-    constructor( ) {
+    constructor() {
         super();
         this.state = ({
             books: []
         })
-
     }
-
 
     componentDidMount() {
         this.ref = fbase.syncState('bookstore/books', {
@@ -25,19 +23,16 @@ class Inventory extends Component {
     }
 
 
-
     render() {
-
         const booksListening  =  this.state.books.map( res => {
             return   <BookView book = {res} addToOrder = {this.props.addToOrder} />
         })
 
-         return (
-         <div className="inventory  col-md-6">
-                <div className= "col-xs-12">  
-                   <p><h3>  Book inventory :</h3></p>
-                 </div>
-                
+        return (
+         <div className="inventory col-md-6">
+                <div className= "text_inventory col-xs-12">  
+                   <p><h3>  Book inventory : </h3></p>
+                </div>
                { booksListening }
          </div>
          );
