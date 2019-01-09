@@ -75,6 +75,13 @@ class AdminPanel extends Component {
     }
 
     componentDidMount() {
+        if(localStorage.getItem('loggedIn')){
+            this.setState({
+                loggedIn: localStorage.getItem('loggedIn')
+            })
+        }
+        console.log( localStorage.getItem('loggedIn') )
+
         this.ref = fbase.syncState('bookstore/books', {
             context: this,
             state: 'books'
@@ -85,13 +92,14 @@ class AdminPanel extends Component {
         fbase.removeBinding(this.ref)
     }
 
-    authenticate = (event) => {
+    authenticate = (event) => {  
         event.preventDefault();
         firebaseApp.auth().signInAndRetrieveDataWithEmailAndPassword(this.state.email,this.state.password)
             .then(()=> {
                 this.setState({
-                            loggedIn: true
+                    loggedIn: true
                  })
+                 localStorage.setItem('loggedIn',true);
             })
             .catch ( () => {
                 console.log("error to autho")
@@ -103,7 +111,7 @@ class AdminPanel extends Component {
          return (
          <div>
             {!this.state.loggedIn  && 
-               <form className="col-md-2 col-xs-4" onSubmit={this.authenticate}>
+               <form className="col-md-offset-5 col-md-3 col-xs-3 col-xs-offset-5" onSubmit={this.authenticate}>
                  <input type="text" placeholder="email" name="email" id="email" className="form-control"
                     onChange={this.handleLoginChange} value={this.state.email} />
                  <input type="password"  placeholder="password" id="password" name="password" className="form-control"

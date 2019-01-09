@@ -6,7 +6,7 @@ class Order extends Component {
     render() {
 
          const bookOrdered = this.props.order.map( book => {
-            return <OrderView  book = {book} remove = {this.props.remove}  />
+            return <OrderView key = {book.name} book = {book} remove = {this.props.remove}  />
           })
 
          return ( 
