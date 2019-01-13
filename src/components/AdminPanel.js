@@ -1,69 +1,17 @@
 import React ,{Component} from 'react';
-import {fbase , firebaseApp} from '../fbase';
+import LoginPanel from './LoginPanel';
+import AddBookForm from './AddBookForm';
+import AdminBookListening from './AdminBookListening';
+import {fbase} from '../fbase';
 
 class AdminPanel extends Component {
 
     constructor() {
         super();
-        this.state = {
+
+        this.state = ({
+            loggedIn : false,
             books:[],
-            book : {
-                name : "",
-                author: "",
-                description:"",
-                onStock :true,
-                image:""
-            },
-            loggedIn :false,
-            email: '',
-            password:''
-        }
-    }
-
-    handleLoginChange = (event) => {
-
-        this.setState  ({
-            [event.target.name]: event.target.value 
-        })
-
-    }
-
-    handleChange = (event) => {
-
-        let newBook;
-
-        if(event.target.name === "onStock") {
-            newBook = {
-                ...this.state.book,  
-                [event.target.name]: event.target.checked  
-            };
-        } else {
-            newBook = {
-                ...this.state.book,  
-                [event.target.name]: event.target.value  
-            };
-        }
-        this.setState({
-            book : newBook
-        })
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        
-
-        let newBook = { ...this.state.book };
-
-       //this.props.addBook(newBook);
-
-       if(Array.isArray(this.state.books)) {
-          this.setState({books: [...this.state.books, newBook] })
-            } else {
-            this.setState({books: [newBook]})
-        }
-          
-
-        this.setState({
             book : {
                 name : "",
                 author: "",
@@ -73,6 +21,8 @@ class AdminPanel extends Component {
             }
         })
     }
+
+    changeLogIn = (newValue) => this.setState({ loggedIn: newValue  })
 
     componentDidMount() {
         if(localStorage.getItem('loggedIn')){
@@ -92,55 +42,29 @@ class AdminPanel extends Component {
         fbase.removeBinding(this.ref)
     }
 
-    authenticate = (event) => {  
-        event.preventDefault();
-        firebaseApp.auth().signInAndRetrieveDataWithEmailAndPassword(this.state.email,this.state.password)
-            .then(()=> {
-                this.setState({
-                    loggedIn: true
-                 })
-                 localStorage.setItem('loggedIn',true);
-            })
-            .catch ( () => {
-                console.log("error to autho")
-            })
-        //console.log(`${this.state.email} ${this.state.password}`);
+    AddNewBook = (book) => {
+        this.setState({books: [...this.state.books, book] })
+        // if(Array.isArray(this.state.books)) {
+        //     this.setState({books: [...this.state.books, book] })
+        //       } else {
+        //       this.setState({books: [book]})
+        //   }
     }
 
+
     render() {
+        console.log(this.state.loggedIn )
          return (
          <div>
             {!this.state.loggedIn  && 
-               <form className="col-md-offset-5 col-md-3 col-xs-3 col-xs-offset-5" onSubmit={this.authenticate}>
-                 <input type="text" placeholder="email" name="email" id="email" className="form-control"
-                    onChange={this.handleLoginChange} value={this.state.email} />
-                 <input type="password"  placeholder="password" id="password" name="password" className="form-control"
-                    onChange={this.handleLoginChange} value={this.state.password} />
-                <button type="submit" class="btn btn-primary"> Add </button>
-               </form>
+               <LoginPanel changeLogIn = {this.changeLogIn} />
             }
-         { this.state.loggedIn && 
-         <div className="adminPanel col-md-4">
-            <form onSubmit={this.handleSubmit}> 
-                    <div className="form-group">
-                        <input type="text" placeholder="Book name" id="name" name="name" className="form-control" onChange={this.handleChange} value={this.state.book.name}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" placeholder="Book author" id="author" name="author" className="form-control" onChange={this.handleChange} value={this.state.book.author} />
-                    </div>
-                    <div className="form-group">
-                        <textarea type="text" placeholder="Book description" id="description" name="description" className="form-control" onChange={this.handleChange} value={this.state.book.description}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="checkbox" id="bookOnStock" name="onStock" className="form-check-input" onChange={this.handleChange} value={this.state.book.onStock}/>
-                        <label htmlFor="bookOnStock" className="form-check-label">On stock</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" placeholder="book image" id="bookimageInput" name="image" className="form-control"  onChange={this.handleChange} value={this.state.book.bookimage}/>
-                    </div>
-                    <button type="submit" className="btn btn-primary"> Submit </button>
-            </form>
-          </div>
+         { this.state.loggedIn &&
+            <fragment>
+             <AddBookForm AddNewBook = {this.AddNewBook}/>
+             <AdminBookListening books = {this.state.books} />
+            </fragment> 
+             
          }
          </div>
          )
