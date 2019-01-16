@@ -15,9 +15,8 @@ class LoginPanel extends Component {
         event.preventDefault();
         firebaseApp.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
             .then(()=> {
-                alert('success')
-                 this.props.changeLogIn(true)
-                // localStorage.setItem('loggedIn',true);
+                 this.props.changeLogIn(true);
+                 localStorage.setItem('loggedIn',true);
             })
             .catch ( () => {
                 alert('error w hasle lub loginie');

@@ -28,7 +28,7 @@ class AdminPanel extends Component {
         if(localStorage.getItem('loggedIn')){
             this.setState({
                 loggedIn: localStorage.getItem('loggedIn')
-            })
+            })  
         }
         console.log( localStorage.getItem('loggedIn') )
 
@@ -42,18 +42,22 @@ class AdminPanel extends Component {
         fbase.removeBinding(this.ref)
     }
 
-    AddNewBook = (book) => {
-        this.setState({books: [...this.state.books, book] })
-        // if(Array.isArray(this.state.books)) {
-        //     this.setState({books: [...this.state.books, book] })
-        //       } else {
-        //       this.setState({books: [book]})
-        //   }
+    removeFromInventory = (bookName) => {
+        this.setState({
+              books: this.state.books.filter( book => { return book.name !== bookName  } )
+        })
     }
 
+    AddNewBook = (book) => {
+        if(Array.isArray(this.state.books)) {
+            this.setState({books: [...this.state.books, book] })
+              } else {
+              this.setState({books: [book]})
+          }
+    }
+ 
 
     render() {
-        console.log(this.state.loggedIn )
          return (
          <div>
             {!this.state.loggedIn  && 
@@ -62,8 +66,10 @@ class AdminPanel extends Component {
          { this.state.loggedIn &&
             <fragment>
              <AddBookForm AddNewBook = {this.AddNewBook}/>
-             <AdminBookListening books = {this.state.books} />
+             <AdminBookListening books = {this.state.books} removeFromInventory = {this.removeFromInventory}/>
             </fragment> 
+            
+
              
          }
          </div>

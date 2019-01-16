@@ -6,9 +6,7 @@ class Inventory extends Component {
 
     constructor() {
         super();
-        this.state = ({
-            books: []
-        })
+        this.state = {}
     }
 
     componentDidMount() {
@@ -24,16 +22,23 @@ class Inventory extends Component {
 
 
     render() {
-        const booksListening  =  this.state.books.map( res => {
-            return   <BookView key = {res.name} book = {res} addToOrder = {this.props.addToOrder} />
-        })
+
+        let bookListening = <h4> no book on stock </h4>
+
+        if(Array.isArray(this.state.books)) {
+            bookListening  =  this.state.books.map( res => {
+                        return   <BookView key = {res.name} book = {res} addToOrder = {this.props.addToOrder} />
+                    })
+        }
+
+        
 
         return (
          <div className="inventory col-md-6">
                 <div className= "text_inventory col-xs-12">  
                    <p><h3>  Book inventory : </h3></p>
                 </div>
-               { booksListening }
+               { bookListening }
          </div>
          );
     }

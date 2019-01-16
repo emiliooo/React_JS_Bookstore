@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-
+import AdminBookView from './AdminBookView';
 
 class AdminBookListening extends Component {
 
@@ -11,13 +11,12 @@ class AdminBookListening extends Component {
     }
 
     render() {
-     
          let list;
 
          if(this.props.books) {
-             list = <ol> {this.props.books.map( (book) => <li>{book.name} {book.author}</li>)}</ol>
+             list = this.props.books.map((book) => <AdminBookView book = {book} removeFromInventory = {this.props.removeFromInventory} />  )
          } else {
-             list = <div> no books in library </div>
+             list = <div> no books in library </div>;
          }
 
          return  (
