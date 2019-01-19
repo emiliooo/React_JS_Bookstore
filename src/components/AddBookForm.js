@@ -1,7 +1,8 @@
 import React ,{Component} from 'react';
+import {connect} from  'react-redux';
 
 
-class AddBookForm extends Component {
+class AddBook extends Component {
 
     constructor() {
         super();
@@ -65,7 +66,7 @@ class AddBookForm extends Component {
             <div className="adminPanel col-md-4">
             <form onSubmit={this.handleSubmit}> 
                     <div className="form-group">
-                        <input type="text" placeholder="Book name" id="name" name="name" className="form-control" onChange={this.handleChange} value={this.state.book.name}/>
+                        <input type="text" placeholder="Book name" id="name" name="name" className="form-control" onChange={this.handleChange} value={this.props.book.name}/>
                     </div>
                     <div className="form-group">
                         <input type="text" placeholder="Book author" id="author" name="author" className="form-control" onChange={this.handleChange} value={this.state.book.author} />
@@ -86,7 +87,14 @@ class AddBookForm extends Component {
      
          )
     }
-
 }
+
+const mapStateToProps = state =>{
+    return {
+        book:state.book
+    }
+}
+
+const AddBookForm = connect(mapStateToProps)(AddBook)
 
 export default AddBookForm;
